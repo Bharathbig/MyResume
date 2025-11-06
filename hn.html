@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>KILLI BHARATH - Portfolio</title>
+  <meta content="Frontend Developer Portfolio of Killi Bharath - React, JavaScript, Bootstrap, HTML, CSS" name="description">
+  <meta content="Killi Bharath, Web Developer, React Developer, Frontend Developer, Portfolio" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <style>
+    /* ======= General Styles ======= */
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* ======= Header ======= */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      height: 100vh;
+      width: 80px;
+      background: #111;
+      transition: all 0.4s;
+    }
+
+    .header .navmenu ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .header .navmenu ul li {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .header .navmenu a {
+      color: #fff;
+      display: block;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .header .navmenu a:hover,
+    .header .navmenu a.active {
+      color: #0d6efd;
+    }
+
+    .header-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      display: none;
+    }
+
+    @media (max-width: 992px) {
+      .header {
+        left: -100%;
+      }
+
+      .header.show {
+        left: 0;
+      }
+
+      .header-toggle {
+        display: block;
+      }
+    }
+
+    /* ======= Hero Section ======= */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url("assets/img/Bharath Image 3.jpg") center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    #hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    #hero .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    #hero h2 {
+      font-size: 2.8rem;
+      font-weight: 700;
+    }
+
+    #hero p {
+      font-size: 1.3rem;
+      margin-top: 10px;
+    }
+
+    #hero .social-links a {
+      color: #fff;
+      font-size: 1.6rem;
+      margin: 0 12px;
+      transition: 0.3s;
+    }
+
+    #hero .social-links a:hover {
+      color: #0d6efd;
+    }
+
+    @media (max-width: 992px) {
+      #hero h2 {
+        font-size: 2.2rem;
+      }
+
+      #hero p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      #hero {
+        height: 100vh;
+        background-position: top center;
+      }
+
+      #hero h2 {
+        font-size: 1.8rem;
+      }
+
+      #hero p {
+        font-size: 1rem;
+      }
+    }
+
+    /* ======= Section Titles ======= */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #0d6efd;
+    }
+
+    /* ======= About Section ======= */
+    .about img {
+      border-radius: 10px;
+    }
+
+    /* ======= Skills Section ======= */
+    .progress {
+      background: #f3f3f3;
+      border-radius: 5px;
+      height: 25px;
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .progress .skill {
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* ======= Portfolio Section ======= */
+    .portfolio-item {
+      transition: 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* ======= Contact Section ======= */
+    .contact .info-item {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      align-items: center;
+    }
+
+    .contact .info-item i {
+      font-size: 24px;
+      color: #0d6efd;
+      margin-right: 15px;
+    }
+
+    .php-email-form button {
+      background: #0d6efd;
+      border: none;
+      padding: 10px 30px;
+      color: #fff;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .php-email-form button:hover {
+      background: #0b5ed7;
+    }
+
+    /* ======= Footer ======= */
+    .footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .footer .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.5rem;
+      transition: 0.3s;
+    }
+
+    .footer .social-links a:hover {
+      color: #0d6efd;
+    }
+
+    /* Scroll Top Button */
+    #scroll-top {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      background: #0d6efd;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    #scroll-top:hover {
+      background: #0b5ed7;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Home</span></a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i><span>About</span></a></li>
+        <li><a href="#skills"><i class="bi bi-bar-chart navicon"></i><span>Skills</span></a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Resume</span></a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center justify-content-center text-center">
+      <div class="container" data-aos="zoom-out">
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <h2>KILLI BHARATH</h2>
+            <p>I'm <span class="typed" data-typed-items="Web Developer, Frontend Engineer, React Developer">Web Developer</span></p>
+            <div class="social-links mt-3">
+              <a href="https://bharathbig.github.io/Cssportfolio/" target="_blank"><i class="bi bi-globe"></i></a>
+              <a href="mailto:killibharath2001@gmail.com"><i class="bi bi-envelope"></i></a>
+              <a href="https://www.linkedin.com/in/killi-bharath-468849253" target="_blank"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section py-5">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Motivated IT professional passionate about developing responsive and dynamic web applications. Skilled in HTML, CSS, Bootstrap, JavaScript, and React.</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center align-items-center">
+          <div class="col-lg-4 text-center">
+            <img src="assets/img/Bharath Image.jpg" class="img-fluid rounded shadow" alt="">
+          </div>
+          <div class="col-lg-8 content">
+            <h2>Frontend Developer &amp; React Enthusiast</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>20 Aug 2001</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+91 7032761180</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Srikakulam, Andhra Pradesh, India</span></li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Tech in Mechanical Engineering</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>killibharath2001@gmail.com</span></li>
+                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills, Resume, Portfolio, Contact sections remain same (you already have them) -->
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer position-relative">
+    <div class="container">
+      <h3 class="sitename">KILLI BHARATH</h3>
+      <p>“Building interactive web experiences with modern technologies like React and JavaScript.”</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="mailto:killibharath2001@gmail.com"><i class="bi bi-envelope"></i></a>
+        <a href="https://bharathbig.github.io/Cssportfolio/" target="_blank"><i class="bi bi-globe"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Killi Bharath</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script>
+    AOS.init();
+
+    const typed = document.querySelector('.typed');
+    if (typed) {
+      let typed_strings = typed.getAttribute('data-typed-items');
+      typed_strings = typed_strings.split(',');
+      new Typed('.typed', {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 100,
+        backSpeed: 50,
+        backDelay: 2000
+      });
+    }
+
+    const headerToggle = document.querySelector('.header-toggle');
+    const header = document.querySelector('.header');
+    headerToggle.addEventListener('click', () => {
+      header.classList.toggle('show');
+    });
+  </script>
+</body>
+
+</html>
